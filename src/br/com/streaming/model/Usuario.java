@@ -9,6 +9,9 @@ public class Usuario {
     private String email;
     private String nome;
     private boolean ativo;
+    // segundo 3° Desafio o slide 35 aula 2.
+    public static final String NOME_PLATAFORMA = "JavaFlix"; 
+
     // TODO: Associação 1..* - Criar Lista de Videos (historicoAssistidos)
 
     public Usuario(String email, String nome) {
@@ -22,4 +25,69 @@ public class Usuario {
         // TODO: Adicionar o vídeo na lista de histórico
     }
     // TODO: Gerar Getters, Setters, equals(), hashCode() e toString()
+
+   public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    // Setters
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+            "nome='" + nome + '\'' +
+            ", email='" + email + '\'' +
+            '}';
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((email == null) ? 0 : email.hashCode());
+        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+        result = prime * result + (ativo ? 1231 : 1237);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Usuario other = (Usuario) obj;
+        if (email == null) {
+            if (other.email != null)
+                return false;
+        } else if (!email.equals(other.email))
+            return false;
+        if (nome == null) {
+            if (other.nome != null)
+                return false;
+        } else if (!nome.equals(other.nome))
+            return false;
+        if (ativo != other.ativo)
+            return false;
+        return true;
+    }
+    
+    public static int contadorUsuarios = 0;
+    public Usuario(){
+        contadorUsuarios++;
+    }
+
 }
