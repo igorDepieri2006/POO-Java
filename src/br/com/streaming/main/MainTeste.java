@@ -1,4 +1,9 @@
 package br.com.streaming.main;
+import br.com.streaming.financeiro.PagamentoCartao;
+import br.com.streaming.financeiro.iPagamento;
+import br.com.streaming.financeiro.Boleto.PagamentoBoleto;
+import br.com.streaming.financeiro.Pix.PagamentoPix;
+import br.com.streaming.financeiro.Processador.ProcessadorDePagamento;
 import br.com.streaming.model.Usuario;
 // TODO: Fazer imports das classes dos pacotes model e financeiro
 
@@ -38,7 +43,20 @@ public class MainTeste {
         System.out.println();
     }  
 }
+//polimosfismo
+        public class Main {
+        public static void main(String[] args) {
+        ProcessadorDePagamento processador = new ProcessadorDePagamento();
 
+iPagamento cartao =new PagamentoCartao();
+iPagamento pix = new PagamentoPix();
+iPagamento boleto = new PagamentoBoleto();
+
+processador.finalizarCompra(cartao, 150.50);
+processador.finalizarCompra(pix, 300.00);
+processador.finalizarCompra(boleto, 50.99);
+}
+}
 }
       
 
